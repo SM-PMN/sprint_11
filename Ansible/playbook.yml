@@ -1,0 +1,17 @@
+- name: Установка стандартных пакетов на VM
+  hosts: all # все машины из inventory
+  become: true # запускаем под root
+  roles:
+    - common # роль для настройки ВМ
+
+- name: Конфиругирование proxy nginx
+  hosts: proxy # только машины из группы proxy
+  become: true # запускаем под root
+  roles: 
+    - nginx_proxy # роль для настройки проксирующего Nginx
+
+- name: Конфигурирование backend nginx
+  hosts: backend # только машины из группы backend
+  become: true # запускаем под root
+  roles:
+    - nginx_backend # роль для настройки отдающего Nginx

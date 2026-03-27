@@ -1,0 +1,10 @@
+# Роль для настройки ВМ
+- name: Изменение имени машины по заданию # изменяем имя машины по заданию из inventory_hostname
+  ansible.builtin.hostname:
+    name: "{{ inventory_hostname }}" # имя машины
+
+- name: Установка стандартных пакетов # устанавливаем стандартные пакеты
+  ansible.builtin.apt:
+    name: "{{ common_packages }}" # список пакетов
+    update_cache: true # обновляем список пакетов перед установкой
+    state: present # устанавливаем пакет

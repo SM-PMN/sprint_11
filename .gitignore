@@ -1,0 +1,49 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.lock.hcl
+.terraformrc
+terraform.rc
+*.tfplan
+
+# Ansible
+*.retry
+.ansible/
+.ansible_facts/
+fact_cache/
+roles/external/
+collections/
+.vault_pass
+.vault_password
+vault-password.txt
+
+# Python / virtual env (часто нужен для Ansible)
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs / temp
+*.log
+tmp/
+temp/

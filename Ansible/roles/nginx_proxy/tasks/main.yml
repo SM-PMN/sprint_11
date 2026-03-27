@@ -1,0 +1,19 @@
+# Установка nginx вынесена в отдельный файл, чтобы его можно было использовать в других ролях
+- name: Установка nginx
+  ansible.builtin.apt:
+    name: nginx # устанавливаем nginx
+    update_cache: true # обновляем список пакетов перед установкой
+    state: present # устанавливаем пакет
+
+- name: Конфигурирование proxy nginx
+  ansible.builtin.template:
+    src: proxy.conf.j2 # шаблон конфигурации nginx
+    dest: /etc/nginx/conf.d/proxy.conf # путь к конфигурации nginx
+    mode: "0644" # режим доступа к файлу конфигурации
+  notify: Restart nginx # перезапускаем nginx
+
+- name: Установка nginx в автозапуск и запуск сервиса
+  ansible.builtin.service:
+    name: nginx # имя сервиса
+    state: started # запускаем сервис
+    enabled: true # включаем автозапуск

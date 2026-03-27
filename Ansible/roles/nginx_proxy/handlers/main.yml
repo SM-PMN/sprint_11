@@ -1,0 +1,5 @@
+# Обработчики для перезапуска nginx после изменения конфигурации
+- name: Restart nginx # перезапускаем nginx после изменения конфигурации
+  ansible.builtin.service:
+    name: nginx # имя сервиса
+    state: restarted # перезапускаем сервис
